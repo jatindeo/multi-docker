@@ -20,7 +20,7 @@ after_success:
 
 ## TAke those images and push them to docker hub
 
---docker push jatindeo/multi-client
---docker push jatindeo/multi-server
---docker push jatindeo/multi-nginx
---docker push jatindeo/multi-worker
+-docker push jatindeo/multi-client
+-docker push jatindeo/multi-server
+-docker push jatindeo/multi-nginx
+-docker push jatindeo/multi-worker
