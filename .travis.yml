@@ -1,0 +1,26 @@
+sudo: required
+service:
+    -docker
+
+before_install:
+    -docker build -t jatindeo/react-test -f ./client/Dockerfile.dev ./client 
+
+script:
+  -docker run jatindeo/react-test npm test -- --coverage
+
+after_success:
+  -docker build -t jatindeo/multi-client ./client
+  -docker build -t jatindeo/multi-nginx ./nginx 
+  -docker build -t jatindeo/multi-server ./server
+  -docker build -t jatindeo/multi-worker ./worker 
+
+## Loginto docker cli
+
+- echo "$DOCKER_PASSWORD"  | docker login -u "$DOCKER_ID" -- password-stdin
+
+## TAke those images and push them to docker hub
+
+--docker push jatindeo/multi-client
+--docker push jatindeo/multi-server
+--docker push jatindeo/multi-nginx
+--docker push jatindeo/multi-worker
