@@ -18,11 +18,11 @@ after_success:
 
 ## Loginto docker cli
 
-- echo "$DOCKER_PASSWORD"  | docker login -u "$DOCKER_ID" -- password-stdin
+  - echo "$DOCKER_PASSWORD"  | docker login -u "$DOCKER_ID" -- password-stdin
 
 ## TAke those images and push them to docker hub
 
-- docker push jatindeo/multi-client
-- docker push jatindeo/multi-server
-- docker push jatindeo/multi-nginx
-- docker push jatindeo/multi-worker
+  - docker push jatindeo/multi-client
+  - docker push jatindeo/multi-server
+  - docker push jatindeo/multi-nginx
+  - docker push jatindeo/multi-worker
